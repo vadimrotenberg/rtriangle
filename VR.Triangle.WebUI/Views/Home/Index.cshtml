@@ -1,0 +1,33 @@
+﻿@model VR.Triangle.WebUI.Models.TriangleModel
+
+@{
+    ViewBag.Title = "Площадь прямоугольного треугольника";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<h2>Площадь прямоугольного треугольника</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="alert alert-danger">
+        @Html.ValidationSummary(true)
+    </div>
+    <table>
+        <tr><td>@Html.LabelFor(t=>t.SideA)</td><td>@Html.TextBoxFor(t=>t.SideA)  мм</td></tr>
+        <tr height="24"><td colspan="2">@Html.ValidationMessageFor(t=>t.SideA)</td></tr>
+
+        <tr><td>@Html.LabelFor(t => t.SideB)</td><td>@Html.TextBoxFor(t => t.SideB) мм</td></tr>
+        <tr height="24"><td colspan="2">@Html.ValidationMessageFor(t => t.SideB)</td></tr>
+
+        <tr><td>@Html.LabelFor(t => t.SideC)</td><td>@Html.TextBoxFor(t => t.SideC) мм</td></tr>
+        <tr height="24"><td colspan="2">@Html.ValidationMessageFor(t => t.SideC)</td></tr>
+
+        <tr><td colspan="2"><input type="submit" class="btn btn-primary"  value="Вычислить" /></td></tr>
+    </table>
+}
+@if (Model!=null && Model.Square.HasValue )
+{
+    <div style="font-size:16px" class="alert alert-success">Площадь равна : @Model.Square мм^2</div>
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
